@@ -45,6 +45,7 @@ body {
   background-image: url("image/backgroundImage.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  margin: auto;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -58,11 +59,20 @@ body {
 }
 
 .grid-content {
+  width: 400px;
+  height: 600px;
   display: grid;
   gap: 25px 30px;
   text-align: center;
+  background-color: white;
 }
 
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .first {
   grid-row-start: 1;
   grid-row-end: 1;
@@ -81,7 +91,7 @@ body {
   grid-row-start: 3;
   grid-row-end: 3;
   grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-end: 3;
 }
 
 .fourth {
@@ -109,6 +119,15 @@ body {
   .grid-content {
     grid-template-columns: 1fr;
   }
+}
+#list {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+ul li {
+  padding: 2px;
 }
 
 .footer {
