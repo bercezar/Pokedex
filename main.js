@@ -17,7 +17,10 @@ $(document).ready(function () {
       success: function (res) {
         list.innerHTML = "";
 
-        namePokemon.textContent = res["name"];
+        function uppercase(str) {
+          return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+        namePokemon.textContent = uppercase(res["name"]);
         imagePokemon.src = res["sprites"]["front_default"];
         imagePokemonShiny.src = res["sprites"]["front_shiny"];
         height.textContent = res["height"];
