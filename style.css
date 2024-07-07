@@ -1,6 +1,6 @@
 @media (min-width: 768px) and (max-width: 1024px) {
   .content {
-    padding: 15px;
+    padding: auto;
   }
   footer {
     padding: 8px;
@@ -9,7 +9,7 @@
 
 @media (min-width: 1025px) {
   .content {
-    padding: 30px;
+    padding: auto;
   }
   footer {
     padding: 15px;
@@ -45,9 +45,8 @@ body {
   background-image: url("image/backgroundImage.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  margin: auto;
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,11 +56,21 @@ body {
 
 #form-group {
   margin: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+#btn_search {
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
 }
 
 .grid-content {
-  width: 400px;
-  height: 600px;
+  margin: 20px auto 40px auto;
+  width: 700px;
+  height: auto;
   padding: 5px;
   display: grid;
   gap: 5px 10px;
@@ -71,13 +80,13 @@ body {
 }
 
 .grid-item {
-  border: 1px solid #645339;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .first {
   grid-row-start: 1;
   grid-row-end: 1;
@@ -86,13 +95,19 @@ body {
 }
 
 .second {
+  border: 3px solid #645339;
   grid-row-start: 2;
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 4;
 }
 
+.second img,
+.fourth img {
+  width: 40%;
+}
 .third {
+  border: 3px solid #645339;
   grid-row-start: 3;
   grid-row-end: 3;
   grid-column-start: 1;
@@ -100,6 +115,7 @@ body {
 }
 
 .fourth {
+  border: 3px solid #645339;
   grid-row-start: 3;
   grid-row-end: 3;
   grid-column-start: 3;

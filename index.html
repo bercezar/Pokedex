@@ -15,11 +15,13 @@
     <div class="content">
       <form id="form-group" action="" method="get">
         <input type="text" name="" id="nameid" />
-        <button id="btn_search">Pesquisar</button>
+        <button id="btn_search">
+          <span>Pesquisar</span>
+        </button>
       </form>
       <div class="grid-content">
         <div class="grid-item first">
-          <h3 id="name"></h3>
+          <h4 id="name"></h4>
         </div>
         <div class="grid-item second">
           <img id="imagePokemon" />
@@ -27,17 +29,42 @@
         <div class="grid-item third">
           <span id="index"></span>
           <ul id="list"></ul>
-          <span>Weight:<span id="weight"></span></span>
-          <span>Height:<span id="height"></span></span>
+          <span id="weight"></span>
+          <span id="height"></span>
         </div>
         <div class="grid-item fourth">
           <img id="imagePokemonShiny" />
         </div>
         <div class="grid-item fifth">
-          <span id="strengths">Strengths</span>
+          <span class="progress-bar">
+            <span>
+              HP
+              <div class="progress hp"></div>
+            </span>
+            <span>
+              Attack
+              <div class="progress at"></div>
+            </span>
+            <span>
+              Defense
+              <div class="progress def"></div>
+            </span>
+            <span>
+              Special-Attack
+              <div class="progress special-at"></div>
+            </span>
+            <span>
+              Special-Defense
+              <div class="progress special-df"></div>
+            </span>
+            <span>
+              Speed
+              <div class="progress speed"></div>
+            </span>
+          </span>
         </div>
         <div class="grid-item sixth">
-          <span id="evolutions">Evoluções</span>
+          <span id="evolutions"></span>
         </div>
       </div>
     </div>

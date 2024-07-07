@@ -10,6 +10,12 @@ $(document).ready(function () {
     const imagePokemonShiny = document.querySelector("#imagePokemonShiny");
     const index = document.querySelector("#index");
     const list = document.querySelector("#list");
+    const hp = document.querySelector(".hp");
+    const at = document.querySelector(".at");
+    const def = document.querySelector(".def");
+    const specialAt = document.querySelector(".special-at");
+    const specialDf = document.querySelector(".special-df");
+    const speed = document.querySelector(".speed");
     $.ajax({
       url: `https://pokeapi.co/api/v2/pokemon/${textId.value}`,
       type: "GET",
@@ -21,11 +27,14 @@ $(document).ready(function () {
           return str.charAt(0).toUpperCase() + str.slice(1);
         }
         namePokemon.textContent = uppercase(res["name"]);
-        imagePokemon.src = res["sprites"]["front_default"];
-        imagePokemonShiny.src = res["sprites"]["front_shiny"];
-        height.textContent = res["height"];
-        weight.textContent = res["weight"];
-        index.textContent = `#${res["id"]}`;
+        imagePokemon.src =
+          res["sprites"]["other"]["official-artwork"]["front_default"];
+        imagePokemonShiny.src =
+          res["sprites"]["other"]["official-artwork"]["front_shiny"];
+        height.textContent = `height: ${res["height"]}`;
+        weight.textContent = `weight: ${res["weight"]} lbs.`;
+        index.textContent = `#Id.${res["id"]}`;
+
         let types = res["types"];
         types.forEach(function (type) {
           let li = document.createElement("li");
@@ -67,7 +76,7 @@ $(document).ready(function () {
             });
           } else if (type["type"]["name"] == "fire") {
             $(li).css({
-              "background-color": "#C03028",
+              "background-color": "#E72929",
               border: "1px solid black",
             });
           } else if (type["type"]["name"] == "flying") {
@@ -133,10 +142,25 @@ $(document).ready(function () {
           }
           list.append(li);
         });
+        let status = res["stats"];
+        status.forEach(function (stat) {
+          hp.textContent = stat["stats"]["base_stat"];
+        });
       },
       error: function () {
-        alert("Erro ao carregar os dados do Pokémon. Verifique o nome inserido.");
+        alert(
+          "Erro ao carregar os dados do Pokémon. Verifique o nome inserido."
+        );
       },
     });
+    // $.ajax({
+    //   url: `https://pokeapi.co/api/v2/pokemon-species/${textId.value}`,
+    //   type: "GET",
+    //   dataType: "json",
+    //   success: function (res) {},
+    //   error: function () {
+    //     alert(".");
+    //   },
+    // });
   });
 });
