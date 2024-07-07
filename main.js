@@ -135,7 +135,7 @@ $(document).ready(function () {
         });
       },
       error: function () {
-        console.log("Erro ao carregar os dados do Pokémon.");
+        alert("Erro ao carregar os dados do Pokémon. Verifique o nome inserido.");
       },
     });
   });
