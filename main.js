@@ -8,7 +8,6 @@ $(document).ready(function () {
     const weight = document.querySelector("#weight");
     const height = document.querySelector("#height");
     const imagePokemonShiny = document.querySelector("#imagePokemonShiny");
-    const index = document.querySelector("#index");
     const list = document.querySelector("#list");
     const hp = document.querySelector(".hp");
     const at = document.querySelector(".at");
@@ -26,14 +25,13 @@ $(document).ready(function () {
         function uppercase(str) {
           return str.charAt(0).toUpperCase() + str.slice(1);
         }
-        namePokemon.textContent = uppercase(res["name"]);
+        namePokemon.textContent = `${uppercase(res["name"])} #id.${res["id"]}`;
         imagePokemon.src =
           res["sprites"]["other"]["official-artwork"]["front_default"];
         imagePokemonShiny.src =
           res["sprites"]["other"]["official-artwork"]["front_shiny"];
         height.textContent = `height: ${res["height"]}`;
-        weight.textContent = `weight: ${res["weight"]} lbs.`;
-        index.textContent = `#Id.${res["id"]}`;
+        weight.textContent = `weight: ${res["weight"]}`;
 
         let types = res["types"];
         types.forEach(function (type) {
@@ -143,8 +141,11 @@ $(document).ready(function () {
           list.append(li);
         });
         let status = res["stats"];
-        status.forEach(function (stat) {
-          hp.textContent = stat["stats"]["base_stat"];
+        let typePower = document.getElementsByClassName("progress");
+        status.forEach(function (stat, index) {
+          let baseStat = stat["base_stat"];
+          let name = stat["stat"]["name"];
+          typePower[index].textContent = name + ": " + baseStat;
         });
       },
       error: function () {
