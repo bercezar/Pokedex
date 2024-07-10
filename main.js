@@ -9,12 +9,7 @@ $(document).ready(function () {
     const height = document.querySelector("#height");
     const imagePokemonShiny = document.querySelector("#imagePokemonShiny");
     const list = document.querySelector("#list");
-    const hp = document.querySelector(".hp");
-    const at = document.querySelector(".at");
-    const def = document.querySelector(".def");
-    const specialAt = document.querySelector(".special-at");
-    const specialDf = document.querySelector(".special-df");
-    const speed = document.querySelector(".speed");
+
     $.ajax({
       url: `https://pokeapi.co/api/v2/pokemon/${textId.value}`,
       type: "GET",
@@ -154,14 +149,14 @@ $(document).ready(function () {
         );
       },
     });
-    // $.ajax({
-    //   url: `https://pokeapi.co/api/v2/pokemon-species/${textId.value}`,
-    //   type: "GET",
-    //   dataType: "json",
-    //   success: function (res) {},
-    //   error: function () {
-    //     alert(".");
-    //   },
-    // });
+    $.ajax({
+      url: `https://pokeapi.co/api/v2/pokemon-species/${textId.value}`,
+      type: "GET",
+      dataType: "json",
+      success: function (res) {},
+      error: function (res) {
+        let urlEvolution = res["evolution_chain"]["url"];
+      },
+    });
   });
 });
