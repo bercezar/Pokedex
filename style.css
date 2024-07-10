@@ -160,7 +160,7 @@ body {
     grid-template-columns: 1fr;
   }
 }
-#list {
+.list {
   display: flex;
   justify-content: center;
   text-align: center;
