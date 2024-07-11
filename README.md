@@ -1,9 +1,5 @@
 # Pokédex
 
-<img align="center" alt="BERNARDO-Python" height="40" width="60"  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
-
-<img align="center" alt="BERNARDO-Python" height="40" width="60"  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jquery/jquery-plain-wordmark.svg" />
-
 > [!NOTE]
 > Pokédex criada como projeto, utilizando jQuery com AJAX para requisições à PokeAPI, além de JavaScript para manipulação do DOM, e HTML & CSS para estrutura e estilo<br>
 
