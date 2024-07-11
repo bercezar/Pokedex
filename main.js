@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // Função para buscar e exibir os dados de um Pokémon
   function pokemon(pokemon) {
     const namePokemon = document.querySelector("#name");
     const imagePokemon = document.querySelector("#imagePokemon");
@@ -8,17 +9,22 @@ $(document).ready(function () {
     const aboutType = document.querySelector(".aboutType");
     const movesPower = document.querySelector(".moves");
 
+    //Requerimento da api através do nome inserido no form ou algo carregar a página
     $.ajax({
       url: `https://pokeapi.co/api/v2/pokemon/${pokemon}`,
       type: "GET",
       dataType: "json",
       success: function (res) {
+        // Limpando as seções de tipos e movimentos para novos dados
         aboutType.innerHTML = "";
         movesPower.innerHTML = "";
 
+        //Função retorna a primeira letra do pokémon em uppercase.
         function uppercase(str) {
           return str.charAt(0).toUpperCase() + str.slice(1);
         }
+
+        //Dados da api: nome, imagem,imagem shiny, peso e altura do pokémon
         namePokemon.textContent = `${uppercase(res["name"])} #id.${res["id"]}`;
         imagePokemon.src =
           res["sprites"]["other"]["official-artwork"]["front_default"];
@@ -27,6 +33,9 @@ $(document).ready(function () {
         height.textContent = `height: ${res["height"]}`;
         weight.textContent = `weight: ${res["weight"]}`;
 
+        // Tipo dos pokémons
+        // Como há pokémons com mais de um tipo, foi inserido um forEach para que percorra uma lista a qual contenha um ou mais nomes de tipos.
+        // Também foi adicionado mudanças de estilos correspondentes aos tipos.
         let types = res["types"];
         types.forEach(function (type) {
           let li = document.createElement("li");
@@ -134,6 +143,8 @@ $(document).ready(function () {
           }
           aboutType.append(li);
         });
+
+        // Stats do pokemon: hp, speed, special-attack..
         let status = res["stats"];
         let typePower = document.getElementsByClassName("progress");
         status.forEach(function (stat, index) {
@@ -142,7 +153,12 @@ $(document).ready(function () {
           typePower[index].textContent = name + ": " + baseStat;
         });
 
+        // Tipos de movimentos/ataques
+        // Percorre uma lista de movimentos de cada pokemon
+        // Dados retornados é o nome do movimento e o tipo do movimento, em que cada tipo correspondente é feito uma mudança de estilo correspondente.
         let moves = res["moves"];
+
+        // Mostra até 12 movimentos e estiliza conforme o tipo de movimento
         let numMoves = Math.min(moves.length, 12);
         for (let i = 0; i < numMoves; i++) {
           let mv = moves[i];
@@ -276,6 +292,7 @@ $(document).ready(function () {
     });
   }
   pokemon("bulbasaur");
+  //Ao clique do botão de pesquisar, é chamada a função pokemon, e é repassado o nome posto no form.
   $("#btn_search").click(function (event) {
     event.preventDefault();
     const textId = document.querySelector("#nameid").value;
