@@ -146,7 +146,7 @@ $(document).ready(function () {
         });
 
         let moves = res["moves"];
-        let numMoves = Math.min(moves.length, 6);
+        let numMoves = Math.min(moves.length, 12);
         for (let i = 0; i < numMoves; i++) {
           let mv = moves[i];
           let move = mv["move"]["name"];
