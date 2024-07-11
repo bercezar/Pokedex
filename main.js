@@ -1,8 +1,5 @@
 $(document).ready(function () {
-  $("#btn_search").click(function (event) {
-    event.preventDefault();
-
-    const textId = document.querySelector("#nameid");
+  function pokemon(pokemon) {
     const namePokemon = document.querySelector("#name");
     const imagePokemon = document.querySelector("#imagePokemon");
     const weight = document.querySelector("#weight");
@@ -12,7 +9,7 @@ $(document).ready(function () {
     const movesPower = document.querySelector(".moves");
 
     $.ajax({
-      url: `https://pokeapi.co/api/v2/pokemon/${textId.value}`,
+      url: `https://pokeapi.co/api/v2/pokemon/${pokemon}`,
       type: "GET",
       dataType: "json",
       success: function (res) {
@@ -277,5 +274,11 @@ $(document).ready(function () {
         );
       },
     });
+  }
+  pokemon("bulbasaur");
+  $("#btn_search").click(function (event) {
+    event.preventDefault();
+    const textId = document.querySelector("#nameid").value;
+    pokemon(textId);
   });
 });
